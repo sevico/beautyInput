@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>button</title>
+    <style>
+        .swkButton {
+            box-sizing: border-box;
+            background: none;
+            border: none;
+            height: 36px;
+            line-height: 36px;
+            padding: 0 16px;
+            border: 1px solid red;
+            text-decoration: none;
+            font-size: 14px;
+            border: none;
+            transition: transform 0.5s;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .swkButton:hover{
+            background-color: #E5E5E5;
+
+        }
+        .swkButton:focus{
+            outline: none;
+            background-color: #E5E5E5;
+        }
+        .swkButton > .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 10px;
+            border-radius: 50%;
+            width: 10px;
+            background-color: red;
+            margin-left: -5px;
+            margin-top: -5px;
+            transition: all 0.5s;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .swkButton > .circle.active {
+            transform: scale(10);
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+<button class="swkButton" id="b">按钮
+<span class="circle"></span>
+</button>
+<script>
+    b.onclick=function (ev) {
+        b.querySelector('.circle').classList.add('active')
+    }
+    b.querySelector('.circle').addEventListener('transitionend',function () {
+        b.querySelector('.circle').classList.remove('active')
+
+    })
+</script>
+</body>
+</html>
